@@ -204,9 +204,13 @@ module BusinessTime
         self.config = default_config
       end
 
+      # WARNING: The `object.deep_dup` method achieves the same
+      # goal of `Marshal.load(Marshal.dump(object))`, but `deep_dup`
+      # is only available as a method on Hash in Rails, i.e. if you
+      # use this version of the gem outside of Rails, this will break!
       def deep_dup(object)
         # Marshal.load(Marshal.dump(object))
-        object
+        object.deep_dup
       end
     end
 
