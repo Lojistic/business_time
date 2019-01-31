@@ -205,7 +205,8 @@ module BusinessTime
       end
 
       def deep_dup(object)
-        Marshal.load(Marshal.dump(object))
+        # Marshal.load(Marshal.dump(object))
+        object
       end
     end
 
